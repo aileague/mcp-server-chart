@@ -1,4 +1,4 @@
-# MCP Server Chart ![](https://badge.mcpx.dev?type=server "MCP Server") [![build](https://github.com/antvis/mcp-server-chart/actions/workflows/build.yml/badge.svg)](https://github.com/antvis/mcp-server-chart/actions/workflows/build.yml) [![npm Version](https://img.shields.io/npm/v/@antv/mcp-server-chart.svg)](https://www.npmjs.com/package/@antv/mcp-server-chart) [![smithery badge](https://smithery.ai/badge/@antvis/mcp-server-chart)](https://smithery.ai/server/@antvis/mcp-server-chart) [![npm License](https://img.shields.io/npm/l/@antv/mcp-server-chart.svg)](https://www.npmjs.com/package/@antv/mcp-server-chart) [![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/antvis/mcp-server-chart)](https://archestra.ai/mcp-catalog/antvis__mcp-server-chart)
+# MCP Server Chart ![](https://badge.mcpx.dev?type=server "MCP Server") [![build](https://github.com/antvis/mcp-server-chart/actions/workflows/build.yml/badge.svg)](https://github.com/antvis/mcp-server-chart/actions/workflows/build.yml) [![npm Version](https://img.shields.io/npm/v/@antv/mcp-server-chart.svg)](https://www.npmjs.com/package/@antv/mcp-server-chart) [![smithery badge](https://smithery.ai/badge/@antvis/mcp-server-chart)](https://smithery.ai/server/@antvis/mcp-server-chart) [![npm License](https://img.shields.io/npm/l/@antv/mcp-server-chart.svg)](https://www.npmjs.com/package/@antv/mcp-server-chart) [![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/antvis/mcp-server-chart)](https://archestra.ai/mcp-catalog/antvis__mcp-server-chart) [![codecov](https://codecov.io/gh/antvis/mcp-server-chart/graph/badge.svg?token=7R98VGO5GL)](https://codecov.io/gh/antvis/mcp-server-chart)
 
 A Model Context Protocol server for generating charts using [AntV](https://github.com/antvis/). We can use this mcp server for _chart generation_ and _data analysis_.
 
@@ -329,51 +329,6 @@ Start the MCP server with Streamable transport:
 node build/index.js -t streamable
 ```
 
-## 📦 Playground
-
-We provide a chat demo that demonstrates how to integrate mcp-server-chart with [@antv/gpt-vis](https://gpt-vis.antv.vision/) for interactive chart generation through natural language conversation.
-
-### Features
-
-- 🤖 **Natural Language Interface**: Describe your chart requirements in plain language
-- 📊 **Intelligent Chart Generation**: Automatically selects appropriate chart types
-- 🎨 **Rich Visualizations**: Renders interactive charts using GPT-Vis
-- 💬 **Smooth Chat Experience**: Built with Ant Design X chat components
-
-### Quick Start
-
-1. **Start MCP Server** (in SSE mode):
-
-```bash
-# From project root
-npm run build
-node build/index.js -t sse
-```
-
-2. **Install Demo Dependencies**:
-
-```bash
-cd demo
-npm install
-```
-
-3. **Run Demo**:
-
-```bash
-npm run dev
-```
-
-4. **Open Browser**: Visit `http://localhost:3000`
-
-### Usage Examples
-
-Try asking questions like:
-
-- "帮我生成一个折线图,显示最近5年的销售趋势"
-- "创建一个饼图,展示市场份额分布"
-- "绘制一个柱状图,对比不同产品的销量"
-
-For more details, see [demo/README.md](./demo/README.md).
 
 ## 📄 License
 
