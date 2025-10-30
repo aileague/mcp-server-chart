@@ -18,10 +18,12 @@ This is a TypeScript-based MCP server that provides chart generation capabilitie
   - [VIS_REQUEST_SERVER](#-private-deployment)
   - [SERVICE_ID](#%EF%B8%8F-generate-records)
   - [DISABLED_TOOLS](#%EF%B8%8F-tool-filtering)
+- [📤 Output Format](#-output-format)
 - [📠 Private Deployment](#-private-deployment)
 - [🗺️ Generate Records](#%EF%B8%8F-generate-records)
 - [🎛️ Tool Filtering](#%EF%B8%8F-tool-filtering)
 - [🔨 Development](#-development)
+- [📦 Playground](#-playground)
 - [📄 License](#-license)
 
 ## ✨ Features
@@ -58,6 +60,7 @@ Now 25+ charts supported.
 
 > [!NOTE]
 > The above geographic visualization chart generation tool uses [AMap service](https://lbs.amap.com/) and currently only supports map generation within China.
+
 
 ## 🤖 Usage
 
@@ -236,6 +239,64 @@ You can disable specific chart generation tools using the `DISABLED_TOOLS` envir
 
 **Available tool names for filtering** See the [✨ Features](#-features).
 
+## 📤 Output Format
+
+When you call any chart generation tool (e.g., `generate_line_chart`, `generate_pie_chart`), the MCP Server returns a response in the following format:
+
+### Standard Chart Response
+
+```typescript
+{
+  content: [
+    {
+      type: "text",
+      text: "https://antv-studio.alipay.com/api/gpt-vis?spec=..." // Chart image URL
+    }
+  ],
+  _meta: {
+    description: "Charts spec configuration, you can use this config to generate the corresponding chart.",
+    spec: {
+      type: "line",       
+      data: [...],        
+      title: "...",        
+      axisXTitle: "...",   
+      axisYTitle: "...", 
+      // ... other chart-specific properties
+    }
+  }
+}
+```
+
+### Usage Examples
+
+#### Using the Image URL
+
+You can directly use the `content[0].text` URL to display the chart image:
+
+```html
+<img src="https://antv-studio.alipay.com/api/gpt-vis?spec=..." alt="Chart" />
+```
+
+#### Using the Chart Spec
+
+For interactive charts, use the `_meta.spec` with GPT-Vis:
+
+```tsx
+import { GPTVis } from '@antv/gpt-vis';
+
+const chartSpec = response._meta.spec;
+
+// Render with GPT-Vis
+<GPTVis>
+  {`\`\`\`vis-chart
+${JSON.stringify(chartSpec, null, 2)}
+\`\`\``}
+</GPTVis>
+```
+
+
+
+
 ## 🔨 Development
 
 Install dependencies:
@@ -268,6 +329,51 @@ Start the MCP server with Streamable transport:
 node build/index.js -t streamable
 ```
 
+## 📦 Playground
+
+We provide a chat demo that demonstrates how to integrate mcp-server-chart with [@antv/gpt-vis](https://gpt-vis.antv.vision/) for interactive chart generation through natural language conversation.
+
+### Features
+
+- 🤖 **Natural Language Interface**: Describe your chart requirements in plain language
+- 📊 **Intelligent Chart Generation**: Automatically selects appropriate chart types
+- 🎨 **Rich Visualizations**: Renders interactive charts using GPT-Vis
+- 💬 **Smooth Chat Experience**: Built with Ant Design X chat components
+
+### Quick Start
+
+1. **Start MCP Server** (in SSE mode):
+
+```bash
+# From project root
+npm run build
+node build/index.js -t sse
+```
+
+2. **Install Demo Dependencies**:
+
+```bash
+cd demo
+npm install
+```
+
+3. **Run Demo**:
+
+```bash
+npm run dev
+```
+
+4. **Open Browser**: Visit `http://localhost:3000`
+
+### Usage Examples
+
+Try asking questions like:
+
+- "帮我生成一个折线图,显示最近5年的销售趋势"
+- "创建一个饼图,展示市场份额分布"
+- "绘制一个柱状图,对比不同产品的销量"
+
+For more details, see [demo/README.md](./demo/README.md).
 
 ## 📄 License
 
