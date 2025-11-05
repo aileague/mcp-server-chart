@@ -49,7 +49,10 @@ function convertMCPToolToOpenAI(mcpTool: MCPTool): OpenAITool {
 export class LLMService {
   private client: OpenAI;
   private mcpClient: MCPClient;
-  private conversationHistory: Array<{ role: string; content: string }> = [];
+  private conversationHistory: Array<{
+    role: "system" | "user" | "assistant";
+    content: string;
+  }> = [];
   private mcpTools: OpenAITool[] = [];
 
   constructor(mcpClient: MCPClient) {

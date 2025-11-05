@@ -15,7 +15,7 @@ This is a conversational chart generation demo application based on MCP Server C
 ### 1. Install Dependencies
 
 ```bash
-cd demo
+cd playground
 npm install
 ```
 
@@ -33,10 +33,11 @@ The service will start at `http://localhost:1122/sse`.
 
 ### 3. Start Playground
 
-创建 .env 文件，配置 VITE_OPENAI_API_KEY：
+Create a `.env` file based on `.env.example` and configure `VITE_OPENAI_API_KEY` and other settings:
 
 ```env
 VITE_OPENAI_API_KEY=your_openai_api_key
+
 ``` 
 
 Then, start the playground application:
@@ -83,7 +84,6 @@ You can customize the chart theme by modifying the `ConfigProvider` in `App.tsx`
   {/* ... */}
 </ConfigProvider>
 ```
-
 
 
 ## License
